@@ -15,8 +15,10 @@
 static t_list   *append_list(t_list *head, t_list *new)
 {
     t_list  *cur;
+
     if (head->content == NULL)
         return (new);
+    cur = head;
     while (cur->next)
     {
         cur = cur->next;
@@ -27,22 +29,25 @@ static t_list   *append_list(t_list *head, t_list *new)
 
 t_list          *insert_list(int fd)
 {
-    int     i;
-    t_list  *current;
     t_list  *head;
-    char    **tetrimino;
+    char    *tetrimino;
 
-    i = 0;
     head = ft_lstnew(NULL, 0);
-    tetrimino = ft_newdarray(4, 4);
-    while (i < 4)
+    tetrimino = ft_strnew(19);
+    while (1)
     {
-        read(fd, tetrimino[i], 4);
-        i++;
-        read(fd, tetrimino[i], 1);
+        if (tetrimino[0] == '\0')
+        {
+            read(fd, tetrimino, 19);
+            head = append_list(head, ft_lstnew(tetrimino, ft_strlen(tetrimino)));
+        }
+        else if (read(fd, tetrimino, 2) == 2)
+        {
+            read(fd, tetrimino, 19);
+            head = append_list(head, ft_lstnew(tetrimino, ft_strlen(tetrimino)));
+        }
+        else
+            return (head);
     }
-    current = ft_lstnew(tetrimino, sizeof(tetrimino) * 4); //not sure about size
-    head = append_list(head, current);
-    read(fd, tetrimino[i], 1);
     return (head);
 }
