@@ -13,7 +13,9 @@
 #ifndef __FILLIT_H
 # define __FILLIT_H
 
-# include "libft.h" //does this work??
+# include "libft.h"
+# include <fcntl.h> //open
+# include <stdio.h> //DELETE before submission
 
 typedef struct	s_map
 {
@@ -21,4 +23,5 @@ typedef struct	s_map
 	char		map[15][15];
 }				t_map;
 
+t_list	*insert_list(int fd);
 #endif
