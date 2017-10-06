@@ -11,53 +11,27 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h> //for open
-#include <stdio.h> //DELETE before submission
 
+static void ft_putarray(char **array) {
+	while (*array)
+	{
+		ft_putstr(*array++);
+		ft_putchar('\n');
+	}
+}
 
 int		main(int argc, char **argv)
 {
 	int		fd;
+	char	**content;
 	t_list	*tetriminos;
 
-	tetriminos = ft_lstnew(NULL. 0);
+	tetriminos = ft_lstnew(NULL, 0);
 	if (argc != 2)
 		return (-1); //TODO: exit properly
-	if (!(fd = open(argv[1], O_RDONLY))
+	if (!(fd = open(argv[1], O_RDONLY)))
 		return (-1); //TODO: exit properly
-	//function to read all tetriminos and input into a linked list
-	
-
+	tetriminos = insert_list(fd);
+	ft_putarray(tetriminos->content);
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
