@@ -14,15 +14,22 @@
 
 int		main(int argc, char **argv)
 {
+	// int		i;
 	int		fd;
 	char	**content;
 	char	**tetriminos;
 
+	// i = 0;
 	if (argc != 2)
 		return (-1); //TODO: exit properly
 	if (!(fd = open(argv[1], O_RDONLY)))
 		return (-1); //TODO: exit properly
 	tetriminos = insert_array(fd);
+	printf("%s\n", tetriminos[0]);
+	// while (tetriminos[i])
+	// {
+	// 	printf("%s\n", tetriminos[i++]);
+	// }
 	close(fd);
 	return (0);
 }

@@ -12,6 +12,20 @@
 
 #include "fillit.h"
 
+int         validate_tetrimino(char *tetrimino)
+{
+    int     i;
+
+    i = 0;
+    if (tetrimino[i] == '#' || tetrimino[i] == '.' || tetrimino[i] == '\n')
+    {
+        i++;
+    }
+    else
+        return (-1);
+    return (0);
+}
+
 char        **insert_array(int fd)
 {
     int     i;
@@ -22,11 +36,22 @@ char        **insert_array(int fd)
     tetrimino = ft_strnew(19);
     tetriminos = ft_darraynew(26, 20);
     read(fd, tetrimino, 19);
-    ft_strcpy(tetriminos[i++], tetrimino);
+    if (validate_tetrimino(tetrimino) == 0)
+    {
+        ft_strcpy(tetriminos[i++], tetrimino);
+    }
+    else
+    {
+        // exit, not a valid file!
+    }
     while (read(fd, tetrimino, 2) == 2)
     {
         read(fd, tetrimino, 19);
-        ft_strcpy(tetriminos[i++], tetrimino);
+        if (validate_tetrimino(tetrimino) == 0)
+            ft_strcpy(tetriminos[i++], tetrimino);
+        else
+        ;
+            // exit, not a valid file!
     }
     return (tetriminos);
 }
