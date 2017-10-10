@@ -12,42 +12,21 @@
 
 #include "fillit.h"
 
-static t_list   *append_list(t_list *head, t_list *new)
+char        **insert_array(int fd)
 {
-    t_list  *cur;
-
-    if (head->content == NULL)
-        return (new);
-    cur = head;
-    while (cur->next)
-    {
-        cur = cur->next;
-    }
-    cur->next = new;
-    return (head);
-}
-
-t_list          *insert_list(int fd)
-{
-    t_list  *head;
+    int     i;
     char    *tetrimino;
+    char    **tetriminos;
 
-    head = ft_lstnew(NULL, 0);
+    i = 0;
     tetrimino = ft_strnew(19);
-    while (1)
+    tetriminos = ft_darraynew(26, 20);
+    read(fd, tetrimino, 19);
+    ft_strcpy(tetriminos[i++], tetrimino);
+    while (read(fd, tetrimino, 2) == 2)
     {
-        if (tetrimino[0] == '\0')
-        {
-            read(fd, tetrimino, 19);
-            head = append_list(head, ft_lstnew(tetrimino, ft_strlen(tetrimino)));
-        }
-        else if (read(fd, tetrimino, 2) == 2)
-        {
-            read(fd, tetrimino, 19);
-            head = append_list(head, ft_lstnew(tetrimino, ft_strlen(tetrimino)));
-        }
-        else
-            return (head);
+        read(fd, tetrimino, 19);
+        ft_strcpy(tetriminos[i++], tetrimino);
     }
-    return (head);
+    return (tetriminos);
 }

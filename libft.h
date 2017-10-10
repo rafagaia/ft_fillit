@@ -66,7 +66,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				**ft_newdarray(int i, int j);
+char				**ft_darraynew(int i, int j);
 char				*ft_itoa(int n);
 int					ft_atoi(const char *str);
 int					ft_isalnum(int c);

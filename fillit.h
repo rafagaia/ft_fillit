@@ -23,5 +23,5 @@ typedef struct	s_map
 	char		map[15][15];
 }				t_map;
 
-t_list	*insert_list(int fd);
+char	**insert_array(int fd);
 #endif

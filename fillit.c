@@ -16,20 +16,13 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	char	**content;
-	t_list	*tetriminos;
+	char	**tetriminos;
 
 	if (argc != 2)
 		return (-1); //TODO: exit properly
 	if (!(fd = open(argv[1], O_RDONLY)))
 		return (-1); //TODO: exit properly
-	tetriminos = insert_list(fd);
-	// print all tetriminos in the list
-	// while (tetriminos)
-	// {
-	// 	printf("\nthe next tetrimino\n");
-	// 	ft_putstr(tetriminos->content);
-	// 	tetriminos = tetriminos->next;
-	// }
+	tetriminos = insert_array(fd);
 	close(fd);
 	return (0);
 }
