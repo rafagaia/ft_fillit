@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_list.c                                      :+:      :+:    :+:   */
+/*   insert_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadamant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/05 14:19:26 by sadamant          #+#    #+#             */
-/*   Updated: 2017/10/05 14:19:28 by sadamant         ###   ########.fr       */
+/*   Created: 2017/10/11 13:18:31 by rgaia             #+#    #+#             */
+/*   Updated: 2017/10/12 15:30:31 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int         validate_tetrimino(char *tetrimino)
+t_tetri		*insert_array(char *buf)
 {
-    int     i;
-
-    i = 0;
-    if (tetrimino[i] == '#' || tetrimino[i] == '.' || tetrimino[i] == '\n')
-    {
-        i++;
-    }
-    else
-        return (-1);
-    return (0);
+	
 }
 
-char        **insert_array(int fd)
+
+
+
+/*char		**insert_array(int fd)
 {
     int     i;
     char    *tetrimino;
@@ -54,4 +48,4 @@ char        **insert_array(int fd)
             // exit, not a valid file!
     }
     return (tetriminos);
-}
+}*/

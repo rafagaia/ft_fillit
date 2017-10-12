@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 17:10:14 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/04 19:11:35 by rgaia            ###   ########.fr       */
+/*   Created: 2017/10/11 19:09:16 by rgaia             #+#    #+#             */
+/*   Updated: 2017/10/11 19:11:59 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FILLIT_H
-# define __FILLIT_H
+#include <stdlib.h>
+#include <stdio.h>
 
-# include "libft.h"
-# include <fcntl.h> //open
-# include <stdio.h> //DELETE before submission
-
-typedef struct	s_map
+void	test_exit(void)
 {
-	size_t		size;
-	char		map[15][15];
-}				t_map;
+	printf("entering test_exit");
+	exit(EXIT_FAILURE);
+	printf("should not print this");
+}
 
-char	**insert_array(int fd);
-#endif
+int		main(void)
+{
+	test_exit();
+	printf("returned from test_exit function");
+	return (0);
+}
