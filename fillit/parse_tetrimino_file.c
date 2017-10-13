@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 19:14:14 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/12 16:02:44 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/12 17:26:54 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	check_valid_format(char *buf)
 			colum_len++;
 			if (colum_len == 4 && buf[i + 1] == '\n') //increments passed new line splitting tetriminos
 			{	
-				i++;
 				colum_len = 0;
+				i++;
 			}
 		}
 		else
@@ -60,7 +60,7 @@ int			parse_tetrimino_file(int fd, char *buf)
 {
 	int		buf_size;
 
-	buf_size = read(fd, buf, 546);
+	buf_size = read(fd, buf, BUF_SIZE);
 	close(fd);
 	if (buf_size > 545 || buf_size < 20) //checks contains min 1, max 26 tetriminos
 		return (0);

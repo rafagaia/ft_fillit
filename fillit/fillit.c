@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 13:17:42 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/12 16:07:30 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/12 17:24:00 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ static void		print_map(t_map *map)
 int				main(int argc, char **argv)
 {
 	int			fd;
-	//t_tetri		*tetriminos;
-	//t_map		*map;
+	t_tetri		*tetriminos;
+	t_map		*map;
 	char		*buf;
 
-	buf = ft_memalloc(546);
+	buf = ft_memalloc(BUF_SIZE);
 	if (argc != 2)
 		exit_error("usage: ./fillit source_file");
 	if (!(fd = open(argv[1], O_RDONLY)))

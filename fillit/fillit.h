@@ -6,13 +6,14 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 17:10:14 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/12 14:23:44 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/12 17:23:35 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FILLIT_H
 # define __FILLIT_H
 # define VALID_CHAR(x) (x == '.' || x == '#')
+# define BUF_SIZE 546
 
 # include <fcntl.h> //open
 # include <stdlib.h>
