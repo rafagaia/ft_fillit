@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 17:10:14 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/12 17:23:35 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/13 17:46:44 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <stdio.h> //DELETE before submission
 # include "../libft/libft.h"
 
-typedef struct
+typedef struct	s_tetri;
 {
-	char	letter;
-	char	*tetrimino;
-}			t_tetri;
+	char		letter;
+	char		*str_tetri;
+}				t_tetri;
 
 typedef struct
 {
@@ -38,5 +38,9 @@ int				parse_tetrimino_file(int fd, char *buf);
 t_tetri			*insert_array(int num_tetriminos, char *buf);
 
 void			solve_smallest_square(t_tetri *tetriminos, t_map *map);
+
+char			**init_hardcoded_tetriminos(void);
+
+char			*reduce_tetrimino(char *t);
 
 #endif

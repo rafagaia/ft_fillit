@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 13:17:42 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/12 17:24:00 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/13 17:43:35 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ static void		print_map(t_map *map)
 		ft_putendl((map->map)[i++]);
 }
 
+/*
+** TODO: init_hardcoded_tetriminos. To be used within checker of valid tetrimino
+** TODO: recursive backtracking solver
+** TODO: init buf within parse_tetrimino_file and return it (not mandatory to do, but better practice? idk)
+**			- If not, then remember to free buf in case any error occurs. Quick solution is to pass buf
+				to error_exit, but makes no sense to free memory within an error handler. Works, not nice?
+*/
 int				main(int argc, char **argv)
 {
 	int			fd;
@@ -77,7 +84,8 @@ int				main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	if (!(parse_tetrimino_file(fd, buf)))
 		exit_error("error");
-	tetriminos = insert_array(buf); //change initial implentation to insert from buffer rather than file
+	if (!(tetriminos = insert_array(buf))); //change initial implentation to insert from buffer rather than file
+		exit_error("error");
 	map = init_map();
 	//solve_smallest_square(tetriminos, map);
 	print_map(map);
