@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 13:17:42 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/13 17:43:35 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/14 13:51:53 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void		print_map(t_map *map)
 }
 
 /*
-** TODO: init_hardcoded_tetriminos. To be used within checker of valid tetrimino
 ** TODO: recursive backtracking solver
 ** TODO: init buf within parse_tetrimino_file and return it (not mandatory to do, but better practice? idk)
 **			- If not, then remember to free buf in case any error occurs. Quick solution is to pass buf
