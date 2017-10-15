@@ -20,7 +20,7 @@
 # include <stdio.h> //DELETE before submission
 # include "../libft/libft.h"
 
-typedef struct	s_tetri;
+typedef struct	s_tetri
 {
 	char		letter;
 	char		*str_tetri;

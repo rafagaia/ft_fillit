@@ -15,7 +15,7 @@
 /*
 **	@in: single file containing up to 26 tetriminos, separated by empty line. No empty line after last tetrimino.
 **  @out: stdout smallest square solution with new line. No empty line
-**  @errors: 
+**  @errors:
 **          1. invalid use of fillit command
 **				- displays 'usage' message
 **			2. invalid file format
