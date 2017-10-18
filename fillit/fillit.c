@@ -73,7 +73,7 @@ static void		print_map(t_map *map)
 int				main(int argc, char **argv)
 {
 	int			fd;
-	t_tetri		*tetriminos;
+	t_tetri		**tetriminos;
 	t_map		*map;
 	char		*buf;
 
@@ -85,11 +85,11 @@ int				main(int argc, char **argv)
 	if (!(parse_tetrimino_file(fd, buf)))
 		exit_error("error");
 	if (!(tetriminos = insert_array(buf))) //change initial implentation to insert from buffer rather than file
-		exit_error("error");
-	map = init_map();
-	//solve_smallest_square(tetriminos, map);
-	print_map(map);
-	ft_memdel((void**)&tetriminos);
-	ft_memdel((void**)&buf);
+		exit_error("error in insert array");
+	// map = init_map();
+	// //solve_smallest_square(tetriminos, map);
+	// print_map(map);
+	// ft_memdel((void**)&tetriminos);
+	// ft_memdel((void**)&buf);
 	return (0);
 }

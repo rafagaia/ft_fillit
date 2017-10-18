@@ -18,37 +18,46 @@
 ** checks str by comparison to all 19 hard coded tetrimino pieces
 */
 
-static t_tetri	*get_next_tetrimino(char *buf, char c, t_tetri *t)
+static int	hash_count(char *t)
 {
-	int		i;
-	char	*str;
-	char	**valids;
+	int count;
 
-	i = 0;
-	valids = valid_tetriminos();
-	if (!(buf[0])) //check if reached end of buffer
-		return (NULL);
-	else if (buf[0] == '\n')
-		buf++;
-	str = ft_strnew(20);
-	str = ft_strncpy(str, buf, 20);
-	str = reduce_tetrimino(str);
-	ft_putendl("PASSES REDUCE_TETRIMINO");
-	ft_putstr(str);
-	t->letter = c;
-	t->str_tetri = ft_strdup(str);
-	ft_strdel(&str);
-	return (t);
+	count = 0;
+	while (*t)
+	{
+		if (*t++ == '#')
+			count++;
+	}
+	if (count != 4)
+		return (0);
+	return (1);
 }
 
-static int	isvalid_tetrimino(char *tetrimino, char **hardcoded)
+static int	isvalid_tetrimino(char	*tetrimino)
 {
+	char	**hardcoded;
+
+	if(!hash_count(tetrimino))
+		return (0);
+	tetrimino = reduce_tetrimino(tetrimino);
+	hardcoded = valid_tetriminos();
 	while (*hardcoded)
 	{
 		if (ft_strcmp(tetrimino, *hardcoded++) == 0)
 			return (1);
 	}
 	return (0);
+}
+
+static t_tetri	*get_next_tetrimino(char c, char	*str)
+{
+	t_tetri	*t;
+
+	t = (t_tetri *)malloc(sizeof(t_tetri));
+	t->letter = c;
+	t->str_tetri = ft_strdup(str);
+	ft_strdel(&str);
+	return (t);
 }
 
 /*
@@ -58,29 +67,29 @@ static int	isvalid_tetrimino(char *tetrimino, char **hardcoded)
 **	@error: invalid tetrimino
 **			- returns NULL
 */
-t_tetri			*insert_array(char *buf)
+t_tetri			**insert_array(char *buf)
 {
+	int		i;
 	char	letter;
-	t_tetri	*tetrimino;
-	t_tetri	*out_tetrimino;
-	char	**hardcoded;
+	char	*str;
+	t_tetri	**tetriminos;
 
+	i = 0;
 	letter = 'A';
-	if (!(tetrimino = ft_memalloc(sizeof(t_tetri) * 26)))
+	if (!(tetriminos = ft_memalloc(sizeof(t_tetri *) * 26)))
 		return (NULL);
-	out_tetrimino = tetrimino;
-	hardcoded = valid_tetriminos();
-	ft_putendl("INITS VALID_TETRIMINOS");
-	while ((tetrimino = get_next_tetrimino(buf, letter++, tetrimino)))
+	while (*buf)
 	{
-		if (isvalid_tetrimino(tetrimino->str_tetri, hardcoded))
+		str = ft_strnew(20);
+		str = ft_strncpy(str, buf, 20);
+		if (isvalid_tetrimino(str))
 		{
-			tetrimino++;
-			buf = buf + 21;
-			ft_putendl("REACHES IS_VALIDTETRIMINO");
+			tetriminos[i] = get_next_tetrimino(letter++, str);
+			i++;
 		}
 		else
 			return (NULL);
+		buf = buf + 21;
 	}
-	return (out_tetrimino);
+	return (tetriminos);
 }

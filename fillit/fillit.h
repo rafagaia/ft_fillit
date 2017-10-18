@@ -35,8 +35,8 @@ typedef struct
 
 int				parse_tetrimino_file(int fd, char *buf);
 
-t_tetri			*insert_array(char *buf);
-	
+t_tetri			**insert_array(char *buf);
+
 void			solve_smallest_square(t_tetri *tetriminos, t_map *map);
 
 char			**valid_tetriminos(void);
