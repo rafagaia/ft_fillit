@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 17:10:14 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/16 23:33:33 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/17 19:55:23 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ t_tetri			*insert_array(char *buf);
 	
 void			solve_smallest_square(t_tetri *tetriminos, t_map *map);
 
-char			*t
-valid_tetriminos(void);
+char			**valid_tetriminos(void);
 
 char			*reduce_tetrimino(char *t);
 
