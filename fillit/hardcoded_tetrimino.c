@@ -6,11 +6,11 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 17:46:07 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/14 00:08:42 by sadamant         ###   ########.fr       */
+/*   Updated: 2017/10/16 23:33:33 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "fillit.h"
+#include "fillit.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -19,17 +19,19 @@
 	Uses string compare to check if the tetrimino passed is valid.
 */
 
-static char **validate_tetriminos(char *t, char **valids)
+static char	**ft_darraynew(int i, int j)
 {
-    while (*valids)
-    {
-        if (ft_strcmp(t, *valids++) == 0)
-            return (1);
-    }
-    return (0); //not a valid tetrimino
+	int		n;
+	char	**darray;
+
+	n = 0;
+	darray = ft_memalloc(i);
+	while (n < i)
+		darray[n++] = ft_memalloc(j);
+	return (darray);
 }
 
-static char	**valid_tetriminos(char *t)
+char	**valid_tetriminos(void)
 //run through and strcmp everything
 {
     char    **valids;
@@ -39,7 +41,7 @@ static char	**valid_tetriminos(char *t)
     valids[2] = "##..##";
     valids[3] = "#...#...#...#";
     valids[4] = "##..#...#";
-    valids[5] = "#...##..#"
+    valids[5] = "#...##..#";
     valids[6] = "#...#...##";
     valids[7] = "#...#..##";
     valids[8] = "##...#...#";
@@ -77,4 +79,5 @@ char	*reduce_tetrimino(char *t)
     }
     *reduced = '\0';
     return (reducedcpy);
-}
+t
+

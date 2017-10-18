@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/11 13:17:42 by rgaia             #+#    #+#             */
-/*   Updated: 2017/10/13 17:43:35 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/10/17 19:49:13 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_map	*init_map(void)
 
 static void		print_map(t_map *map)
 {
-	int			i;
+	size_t		i;
 
 	i = 0;
 	while (i < (map->size) && (map->map)[i])
@@ -84,7 +84,7 @@ int				main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	if (!(parse_tetrimino_file(fd, buf)))
 		exit_error("error");
-	if (!(tetriminos = insert_array(buf))); //change initial implentation to insert from buffer rather than file
+	if (!(tetriminos = insert_array(buf))) //change initial implentation to insert from buffer rather than file
 		exit_error("error");
 	map = init_map();
 	//solve_smallest_square(tetriminos, map);
