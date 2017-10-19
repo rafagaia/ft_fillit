@@ -18,7 +18,7 @@
 ** checks str by comparison to all 19 hard coded tetrimino pieces
 */
 
-static int	hash_count(char *t)
+static int	valid_characters(char *t)
 {
 	int count;
 
@@ -37,7 +37,7 @@ static int	isvalid_tetrimino(char	*tetrimino)
 {
 	char	**hardcoded;
 
-	if(!hash_count(tetrimino))
+	if(!valid_characters(tetrimino))
 		return (0);
 	tetrimino = reduce_tetrimino(tetrimino);
 	hardcoded = valid_tetriminos();
@@ -55,7 +55,10 @@ static t_tetri	*get_next_tetrimino(char c, char	*str)
 
 	t = (t_tetri *)malloc(sizeof(t_tetri));
 	t->letter = c;
-	t->str_tetri = ft_strdup(str);
+	if (str)
+		t->str_tetri = ft_strdup(str);
+	else
+		t->str_tetri = NULL;
 	ft_strdel(&str);
 	return (t);
 }
@@ -83,13 +86,12 @@ t_tetri			**insert_array(char *buf)
 		str = ft_strnew(20);
 		str = ft_strncpy(str, buf, 20);
 		if (isvalid_tetrimino(str))
-		{
-			tetriminos[i] = get_next_tetrimino(letter++, str);
-			i++;
-		}
+			tetriminos[i++] = get_next_tetrimino(letter++, reduce_tetrimino(str));
 		else
 			return (NULL);
 		buf = buf + 21;
 	}
+	while (i < 26)
+		tetriminos[i++] = get_next_tetrimino('\0', NULL);
 	return (tetriminos);
 }

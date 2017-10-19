@@ -85,7 +85,7 @@ int				main(int argc, char **argv)
 	if (!(parse_tetrimino_file(fd, buf)))
 		exit_error("error");
 	if (!(tetriminos = insert_array(buf))) //change initial implentation to insert from buffer rather than file
-		exit_error("error in insert array");
+		exit_error("error");
 	// map = init_map();
 	// //solve_smallest_square(tetriminos, map);
 	// print_map(map);
