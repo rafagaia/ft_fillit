@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 18:52:41 by rgaia             #+#    #+#             */
-/*   Updated: 2017/11/25 16:31:35 by rgaia            ###   ########.fr       */
-/*   Updated: 2017/11/23 14:30:33 by rgaia            ###   ########.fr       */
+/*   Created: 2017/11/08 15:06:31 by rgaia             #+#    #+#             */
+/*   Updated: 2017/11/21 16:33:33 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+//char	**valid_file_format(int fd);
+//t_list	*read_tetriminos(char **file_tetriminos);
 
 /*
 ** This is the entry point to our Fillit program
@@ -23,35 +25,29 @@ void	exit_failure(char *str)
 	exit(EXIT_FAILURE);
 }
 
-//include free_memory functions here
 
 int		main(int argc, char **argv)
 {
 	int			fd;
 	char		**file_tetriminos;
-	t_map		*map;
 	t_list		*tetriminos;
+	t_map		*map;
 
 	//Inputs
 	//	read file, and return a List containing a Tetrimino Struct at each element
 	if (argc != 2)
 		exit_failure("usage: ./fillit source_file");
-	//Validation.c
-	if ((fd = open(argv[1], O_RDONLY)) < 1)
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit_failure("error");
 	if ((file_tetriminos = valid_file_format(fd)) == NULL)
 		exit_failure("error");
-	//Tetrimino.c
 	tetriminos = read_tetriminos(file_tetriminos);
-	//Solve.c
-	//	receive a List with tetriminos, and 
-	//	output a Map Struct filled with Tetrimino pieces by their letter
+	printf("FINISHED INSERTING TETRIMINOS TO LIST\n");
 	map = solve(tetriminos);
-	//Output.c
-	//	receive a Map Struct, and output to Standard Out
+	printf("ENTERING PRINT MAP\n");
 	print_map(map);
-	//free_file_tetriminos(&file_tetriminos);
-	//free_tetriminos(&tetriminos);
-	//free_map(&map);
+	//file_tetriminos_delete(&file_tetriminos);
+	//map_delete(&map);
+	//tetriminos_delete(&tetriminos);
 	return (0);
 }

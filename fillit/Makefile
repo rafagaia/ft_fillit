@@ -3,29 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgaia <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: eguajard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/10/11 23:03:39 by rgaia             #+#    #+#              #
-#    Updated: 2017/10/16 21:45:02 by rgaia            ###   ########.fr        #
+#    Created: 2017/11/02 10:38:16 by eguajard          #+#    #+#              #
+#    Updated: 2017/11/27 09:05:54 by rgaia            ###   ########.fr        #
+#    Updated: 2017/11/22 16:46:09 by rgaia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME =			fillit
 
-SRC = fillit.c parse_tetrimino_file.c insert_array.c hardcoded_tetrimino.c
+COMPILA =		gcc -Wall -Wextra -Werror -c
 
-FLAGS = -Wall -Wextra -Werror -L../libft/. -lft -o
+T_COMPILA =		gcc -Wall -Wextra -Werror -g -c
+
+CFILES =		fillit.c \
+				valid_integration.c \
+				valid_read_and_split.c \
+				valid_shape.c \
+				tetrimino.c \
+				solve.c \
+				solve_utils.c \
+				output.c \
+
+TEST_FILES =	test/src/test_checkfit.c \
+				valid_integration.c \
+				valid_read_and_split.c \
+				valid_shape.c \
+				tetrimino.c \
+				solve.c \
+				solve_utils.c \
+				output.c \
+
+OFILES =		*.o
+
+LINK_FLAGS =	-L../libft/. -lft
 
 all: $(NAME)
 
 $(NAME):
-		@gcc $(FLAGS) $(NAME) $(SRC)
+	$(T_COMPILA) $(TEST_FILES)
+	gcc $(LINK_FLAGS) $(OFILES) -o $(NAME)
 
-clean:
-		@rm -rf *.o
+clean: 
+	@/bin/rm -f $(OFILES)
 
 fclean: clean
-		@rm -rf $(NAME)
+	@/bin/rm -f $(NAME)
 
-re: fclean 
-	@make
+re: fclean all
