@@ -6,7 +6,7 @@
 /*   By: rgaia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 10:56:18 by rgaia             #+#    #+#             */
-/*   Updated: 2017/11/09 12:53:37 by rgaia            ###   ########.fr       */
+/*   Updated: 2017/11/30 15:35:28 by rgaia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_list
 **	Util
 */
 int					ft_atoi(const char *str);
+int					ft_abs(int c);
 int					ft_isalpha(int c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
@@ -52,6 +53,7 @@ int					ft_isblank(int c);
 **	String
 */
 size_t				ft_strlen(const char *s);
+size_t				ft_strnlen(const char *s, char c);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strdup(const char *s1);
 char				*ft_strndup(const char *s1, size_t len);
